@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%" style="background-color: #0f172a; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="personGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="externalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- Title & Header -->
+  <text x="500" y="45" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="700">Diagrama de Contexto del Sistema (C4 - Nivel 1)</text>
+  <text x="500" y="72" text-anchor="middle" fill="#94a3b8" font-size="14">Plataforma de Inscripción Académica (PIA) - Universidad de la Salle</text>
+  <line x1="100" y1="90" x2="900" y2="90" stroke="#334155" stroke-width="1"/>
+
+  <!-- Actor 1: Estudiante -->
+  <g transform="translate(60, 160)" filter="url(#shadow)">
+    <rect width="220" height="150" rx="12" fill="url(#personGrad)" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="110" cy="40" r="20" fill="#e0f2fe"/>
+    <path d="M 85 80 Q 110 58 135 80 Z" fill="#e0f2fe"/>
+    <text x="110" y="105" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700">Estudiante</text>
+    <text x="110" y="125" text-anchor="middle" fill="#e0f2fe" font-size="11">[Persona - 24.000 usuarios]</text>
+    <text x="110" y="140" text-anchor="middle" fill="#bae6fd" font-size="10">Consulta oferta, inscribe y cancela</text>
+  </g>
+
+  <!-- Actor 2: Coordinador Académico -->
+  <g transform="translate(60, 390)" filter="url(#shadow)">
+    <rect width="220" height="150" rx="12" fill="url(#personGrad)" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="110" cy="40" r="20" fill="#e0f2fe"/>
+    <path d="M 85 80 Q 110 58 135 80 Z" fill="#e0f2fe"/>
+    <text x="110" y="105" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700">Coordinador / Admin</text>
+    <text x="110" y="125" text-anchor="middle" fill="#e0f2fe" font-size="11">[Persona - 5 Facultades]</text>
+    <text x="110" y="140" text-anchor="middle" fill="#bae6fd" font-size="10">Monitorea cupos, fechas y auditoría</text>
+  </g>
+
+  <!-- Main System: PIA -->
+  <g transform="translate(360, 220)" filter="url(#shadow)">
+    <rect width="280" height="230" rx="16" fill="url(#primaryGrad)" stroke="#60a5fa" stroke-width="3"/>
+    <rect x="15" y="15" width="250" height="30" rx="6" fill="#1e3a8a"/>
+    <text x="140" y="35" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="600">[Sistema de Software]</text>
+    <text x="140" y="75" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="700">Plataforma PIA</text>
+    <text x="140" y="98" text-anchor="middle" fill="#bfdbfe" font-size="12">Inscripción Académica Desacoplada</text>
+    
+    <rect x="20" y="115" width="240" height="95" rx="8" fill="#172554" opacity="0.8"/>
+    <text x="140" y="135" text-anchor="middle" fill="#e0e7ff" font-size="11" font-weight="600">Responsabilidades Clave:</text>
+    <text x="140" y="155" text-anchor="middle" fill="#cbd5e1" font-size="10">• Control estricto de cupos (cero sobrecupo)</text>
+    <text x="140" y="172" text-anchor="middle" fill="#cbd5e1" font-size="10">• Manejo de reintentos e idempotencia</text>
+    <text x="140" y="189" text-anchor="middle" fill="#cbd5e1" font-size="10">• Operación autónoma ante caídas del legado</text>
+    <text x="140" y="204" text-anchor="middle" fill="#cbd5e1" font-size="10">• Sincronización asíncrona (Outbox)</text>
+  </g>
+
+  <!-- External System 1: Sistema Académico Legado -->
+  <g transform="translate(710, 130)" filter="url(#shadow)">
+    <rect width="240" height="150" rx="12" fill="url(#externalGrad)" stroke="#94a3b8" stroke-width="2"/>
+    <text x="120" y="30" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="600">[Sistema Externo Legado - 12+ años]</text>
+    <text x="120" y="58" text-anchor="middle" fill="#f1f5f9" font-size="16" font-weight="700">Sistema Académico</text>
+    <text x="120" y="78" text-anchor="middle" fill="#f1f5f9" font-size="16" font-weight="700">Institucional (Legado)</text>
+    <line x1="20" y1="92" x2="220" y2="92" stroke="#475569" stroke-width="1"/>
+    <text x="120" y="110" text-anchor="middle" fill="#94a3b8" font-size="10">Fuente oficial de historial académico,</text>
+    <text x="120" y="125" text-anchor="middle" fill="#94a3b8" font-size="10">planes de estudio y prerrequisitos.</text>
+    <text x="120" y="140" text-anchor="middle" fill="#f87171" font-size="10">Sujeto a caídas de hasta 40 min.</text>
+  </g>
+
+  <!-- External System 2: Autenticación Institucional -->
+  <g transform="translate(710, 310)" filter="url(#shadow)">
+    <rect width="240" height="120" rx="12" fill="url(#externalGrad)" stroke="#94a3b8" stroke-width="2"/>
+    <text x="120" y="28" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="600">[Sistema Externo]</text>
+    <text x="120" y="52" text-anchor="middle" fill="#f1f5f9" font-size="15" font-weight="700">Directorio Activo / LDAP</text>
+    <line x1="20" y1="65" x2="220" y2="65" stroke="#475569" stroke-width="1"/>
+    <text x="120" y="85" text-anchor="middle" fill="#94a3b8" font-size="10">Autentica credenciales institucionales</text>
+    <text x="120" y="102" text-anchor="middle" fill="#94a3b8" font-size="10">de estudiantes y docentes de La Salle.</text>
+  </g>
+
+  <!-- External System 3: Notificaciones / Correo -->
+  <g transform="translate(710, 460)" filter="url(#shadow)">
+    <rect width="240" height="120" rx="12" fill="url(#externalGrad)" stroke="#94a3b8" stroke-width="2"/>
+    <text x="120" y="28" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="600">[Sistema Externo]</text>
+    <text x="120" y="52" text-anchor="middle" fill="#f1f5f9" font-size="15" font-weight="700">Servicio de Correo Institucional</text>
+    <line x1="20" y1="65" x2="220" y2="65" stroke="#475569" stroke-width="1"/>
+    <text x="120" y="85" text-anchor="middle" fill="#94a3b8" font-size="10">Envío de comprobantes de inscripción</text>
+    <text x="120" y="102" text-anchor="middle" fill="#94a3b8" font-size="10">y alertas de confirmación diferida.</text>
+  </g>
+
+  <!-- Relationships with arrows -->
+  <!-- Estudiante -> PIA -->
+  <path d="M 280 235 L 360 270" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="270" y="225" width="85" height="30" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="312" y="240" text-anchor="middle" fill="#38bdf8" font-size="9" font-weight="600">HTTPS / JSON</text>
+  <text x="312" y="250" text-anchor="middle" fill="#94a3b8" font-size="8">Inscribe / Consulta</text>
+
+  <!-- Coordinador -> PIA -->
+  <path d="M 280 435 L 360 400" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="270" y="405" width="85" height="30" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="312" y="420" text-anchor="middle" fill="#38bdf8" font-size="9" font-weight="600">HTTPS / RBAC</text>
+  <text x="312" y="430" text-anchor="middle" fill="#94a3b8" font-size="8">Gestiona / Audita</text>
+
+  <!-- PIA -> Legado -->
+  <path d="M 640 280 L 710 230" stroke="#38bdf8" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+  <rect x="630" y="235" width="100" height="36" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="680" y="249" text-anchor="middle" fill="#38bdf8" font-size="9" font-weight="600">Outbox Asíncrono</text>
+  <text x="680" y="260" text-anchor="middle" fill="#94a3b8" font-size="8">Batch / Circuit Breaker</text>
+  <text x="680" y="269" text-anchor="middle" fill="#4ade80" font-size="7">Tolerante a caídas 40m</text>
+
+  <!-- PIA -> LDAP -->
+  <path d="M 640 340 L 710 360" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="635" y="335" width="85" height="24" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="677" y="347" text-anchor="middle" fill="#38bdf8" font-size="9" font-weight="600">LDAPS / Auth</text>
+  <text x="677" y="356" text-anchor="middle" fill="#94a3b8" font-size="8">Valida identidad</text>
+
+  <!-- PIA -> Correo -->
+  <path d="M 640 410 L 710 490" stroke="#38bdf8" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+  <rect x="635" y="445" width="85" height="24" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="677" y="457" text-anchor="middle" fill="#38bdf8" font-size="9" font-weight="600">SMTP / Asíncrono</text>
+  <text x="677" y="466" text-anchor="middle" fill="#94a3b8" font-size="8">Envía confirmación</text>
+
+  <!-- Legend -->
+  <g transform="translate(100, 580)">
+    <rect width="800" height="45" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="25" y="15" width="16" height="16" rx="3" fill="#2563eb"/>
+    <text x="50" y="28" fill="#cbd5e1" font-size="11">Sistema en Alcance (PIA)</text>
+
+    <rect x="235" y="15" width="16" height="16" rx="3" fill="#0284c7"/>
+    <text x="260" y="28" fill="#cbd5e1" font-size="11">Actores (Usuarios)</text>
+
+    <rect x="425" y="15" width="16" height="16" rx="3" fill="#334155"/>
+    <text x="450" y="28" fill="#cbd5e1" font-size="11">Sistemas Externos</text>
+
+    <line x1="605" y1="23" x2="635" y2="23" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4"/>
+    <text x="645" y="28" fill="#cbd5e1" font-size="11">Comunicación Asíncrona Resiliente</text>
+  </g>
+</svg>

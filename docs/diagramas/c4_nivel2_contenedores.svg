@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 780" width="100%" height="100%" style="background-color: #0b1120; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="dbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="cacheGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#991b1b" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    <linearGradient id="extGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="575" y="40" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="700">Diagrama de Contenedores (C4 - Nivel 2)</text>
+  <text x="575" y="65" text-anchor="middle" fill="#94a3b8" font-size="14">Plataforma de Inscripción Académica (PIA) - Arquitectura On-Premise Linux / PostgreSQL</text>
+  <line x1="80" y1="85" x2="1070" y2="85" stroke="#334155" stroke-width="1"/>
+
+  <!-- Boundary: Plataforma PIA (Linux On-Premise) -->
+  <rect x="260" y="110" width="600" height="610" rx="16" fill="#0f172a" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,4" opacity="0.95"/>
+  <text x="280" y="135" fill="#60a5fa" font-size="14" font-weight="700">Límite del Sistema: Servidores Linux On-Premise (C08 / C10)</text>
+
+  <!-- User on the left -->
+  <g transform="translate(30, 260)" filter="url(#cardShadow)">
+    <rect width="180" height="130" rx="12" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="90" cy="35" r="18" fill="#e0f2fe"/>
+    <path d="M 68 70 Q 90 50 112 70 Z" fill="#e0f2fe"/>
+    <text x="90" y="92" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Estudiante</text>
+    <text x="90" y="110" text-anchor="middle" fill="#bae6fd" font-size="10">1.200 a 1.800 concurrentes</text>
+    <text x="90" y="122" text-anchor="middle" fill="#e0f2fe" font-size="9">(Navegador Web / HTTPS)</text>
+  </g>
+
+  <!-- Container 1: SPA Web Client -->
+  <g transform="translate(290, 160)" filter="url(#cardShadow)">
+    <rect width="240" height="110" rx="10" fill="url(#boxGrad)" stroke="#60a5fa" stroke-width="2"/>
+    <text x="120" y="25" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">[Contenedor: SPA / Web]</text>
+    <text x="120" y="48" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Cliente Web PIA</text>
+    <line x1="20" y1="58" x2="220" y2="58" stroke="#3b82f6" stroke-width="1"/>
+    <text x="120" y="75" text-anchor="middle" fill="#e2e8f0" font-size="10">SPA en TypeScript / React</text>
+    <text x="120" y="90" text-anchor="middle" fill="#93c5fd" font-size="9">• Genera Idempotency-Key (UUIDv4)</text>
+    <text x="120" y="102" text-anchor="middle" fill="#93c5fd" font-size="9">• Bloquea botón ante reintentos</text>
+  </g>
+
+  <!-- Container 2: Nginx Reverse Proxy & Rate Limiter -->
+  <g transform="translate(590, 160)" filter="url(#cardShadow)">
+    <rect width="240" height="110" rx="10" fill="url(#boxGrad)" stroke="#60a5fa" stroke-width="2"/>
+    <text x="120" y="25" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">[Contenedor: Proxy / Balanceo]</text>
+    <text x="120" y="48" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Nginx / SSL &amp; Rate Limit</text>
+    <line x1="20" y1="58" x2="220" y2="58" stroke="#3b82f6" stroke-width="1"/>
+    <text x="120" y="75" text-anchor="middle" fill="#e2e8f0" font-size="10">Reverse Proxy en Linux</text>
+    <text x="120" y="90" text-anchor="middle" fill="#fca5a5" font-size="9">• Mitigación Escenario B (limit_req)</text>
+    <text x="120" y="102" text-anchor="middle" fill="#93c5fd" font-size="9">• Compresión gzip y balanceo</text>
+  </g>
+
+  <!-- Container 3: Monolito Modular Backend -->
+  <g transform="translate(420, 310)" filter="url(#cardShadow)">
+    <rect width="320" height="150" rx="12" fill="url(#boxGrad)" stroke="#60a5fa" stroke-width="2.5"/>
+    <text x="160" y="24" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">[Contenedor: API Backend]</text>
+    <text x="160" y="46" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700">Servicio Central PIA</text>
+    <text x="160" y="62" text-anchor="middle" fill="#bfdbfe" font-size="11">Monolito Modular (Hexagonal)</text>
+    <line x1="25" y1="70" x2="295" y2="70" stroke="#3b82f6" stroke-width="1"/>
+    <text x="160" y="88" text-anchor="middle" fill="#e2e8f0" font-size="10">• Módulo de Validación de Prerrequisitos</text>
+    <text x="160" y="103" text-anchor="middle" fill="#e2e8f0" font-size="10">• Módulo de Inscripciones y Control de Cupos</text>
+    <text x="160" y="118" text-anchor="middle" fill="#e2e8f0" font-size="10">• Módulo de Catálogo Académico (CQRS Read)</text>
+    <text x="160" y="133" text-anchor="middle" fill="#e2e8f0" font-size="10">• Módulo de Auditoría y Trazabilidad (RBAC)</text>
+  </g>
+
+  <!-- Container 4: Redis In-Memory Cache & Lock -->
+  <g transform="translate(285, 340)" filter="url(#cardShadow)">
+    <rect width="115" height="120" rx="10" fill="url(#cacheGrad)" stroke="#f87171" stroke-width="2"/>
+    <text x="57" y="22" text-anchor="middle" fill="#fecaca" font-size="9" font-weight="600">[Caché Memoria]</text>
+    <text x="57" y="42" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">Redis</text>
+    <line x1="10" y1="50" x2="105" y2="50" stroke="#ef4444" stroke-width="1"/>
+    <text x="57" y="68" text-anchor="middle" fill="#fee2e2" font-size="8">Deduplicación</text>
+    <text x="57" y="80" text-anchor="middle" fill="#fee2e2" font-size="8">Idempotencia</text>
+    <text x="57" y="94" text-anchor="middle" fill="#fee2e2" font-size="8">Caché Catálogo</text>
+    <text x="57" y="108" text-anchor="middle" fill="#4ade80" font-size="8">Latencia &lt; 5ms</text>
+  </g>
+
+  <!-- Container 5: Outbox Worker -->
+  <g transform="translate(590, 500)" filter="url(#cardShadow)">
+    <rect width="240" height="120" rx="10" fill="url(#boxGrad)" stroke="#38bdf8" stroke-width="2"/>
+    <text x="120" y="24" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">[Servicio Daemon / Worker]</text>
+    <text x="120" y="46" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Worker de Sincronización</text>
+    <line x1="20" y1="56" x2="220" y2="56" stroke="#3b82f6" stroke-width="1"/>
+    <text x="120" y="74" text-anchor="middle" fill="#e2e8f0" font-size="10">Patrón Transactional Outbox</text>
+    <text x="120" y="89" text-anchor="middle" fill="#4ade80" font-size="9">• Circuit Breaker (soporta caídas 40m)</text>
+    <text x="120" y="103" text-anchor="middle" fill="#93c5fd" font-size="9">• Reintentos exponenciales hacia el legado</text>
+  </g>
+
+  <!-- Container 6: PostgreSQL Database Primary & Standby -->
+  <g transform="translate(285, 490)" filter="url(#cardShadow)">
+    <rect width="270" height="200" rx="12" fill="url(#dbGrad)" stroke="#34d399" stroke-width="2"/>
+    <text x="135" y="25" text-anchor="middle" fill="#a7f3d0" font-size="10" font-weight="600">[Base de Datos Relacional On-Premise]</text>
+    <text x="135" y="48" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Cluster PostgreSQL (C08)</text>
+    <line x1="20" y1="58" x2="250" y2="58" stroke="#10b981" stroke-width="1"/>
+    
+    <rect x="15" y="68" width="115" height="110" rx="6" fill="#064e3b" stroke="#34d399" stroke-width="1"/>
+    <text x="72" y="86" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">Nodo Primario</text>
+    <text x="72" y="102" text-anchor="middle" fill="#a7f3d0" font-size="8">Escrituras ACID</text>
+    <text x="72" y="116" text-anchor="middle" fill="#a7f3d0" font-size="8">Reserva de Cupos</text>
+    <text x="72" y="130" text-anchor="middle" fill="#a7f3d0" font-size="8">Tabla Outbox</text>
+    <text x="72" y="144" text-anchor="middle" fill="#a7f3d0" font-size="8">Auditoría</text>
+
+    <!-- Replication arrow -->
+    <path d="M 130 120 L 150 120" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    <text x="140" y="112" text-anchor="middle" fill="#34d399" font-size="7">WAL</text>
+
+    <rect x="150" y="68" width="105" height="110" rx="6" fill="#064e3b" stroke="#34d399" stroke-width="1"/>
+    <text x="202" y="86" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">Nodo Réplica</text>
+    <text x="202" y="102" text-anchor="middle" fill="#a7f3d0" font-size="8">Streaming Repl.</text>
+    <text x="202" y="116" text-anchor="middle" fill="#a7f3d0" font-size="8">Lecturas Catálogo</text>
+    <text x="202" y="130" text-anchor="middle" fill="#a7f3d0" font-size="8">RPO &lt; 1 min</text>
+    <text x="202" y="144" text-anchor="middle" fill="#a7f3d0" font-size="8">RTO &lt; 15 min</text>
+
+    <text x="135" y="190" text-anchor="middle" fill="#d1fae5" font-size="9">Pooler de Conexiones: PgBouncer</text>
+  </g>
+
+  <!-- External System: Legacy -->
+  <g transform="translate(895, 480)" filter="url(#cardShadow)">
+    <rect width="220" height="150" rx="12" fill="url(#extGrad)" stroke="#94a3b8" stroke-width="2"/>
+    <text x="110" y="25" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="600">[Sistema Externo Legado]</text>
+    <text x="110" y="48" text-anchor="middle" fill="#f1f5f9" font-size="15" font-weight="700">Sistema Académico</text>
+    <text x="110" y="68" text-anchor="middle" fill="#f1f5f9" font-size="15" font-weight="700">Institucional (12+ años)</text>
+    <line x1="20" y1="80" x2="200" y2="80" stroke="#475569" stroke-width="1"/>
+    <text x="110" y="98" text-anchor="middle" fill="#94a3b8" font-size="9">Fuente Oficial de Notas</text>
+    <text x="110" y="112" text-anchor="middle" fill="#94a3b8" font-size="9">y Prerrequisitos Históricos</text>
+    <text x="110" y="128" text-anchor="middle" fill="#f87171" font-size="9">Caídas de hasta 40 min</text>
+  </g>
+
+  <!-- Connections -->
+  <!-- User -> SPA -->
+  <path d="M 210 300 L 290 230" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="240" y="255" fill="#38bdf8" font-size="8" font-weight="600">Carga UI</text>
+
+  <!-- SPA -> Nginx -->
+  <path d="M 530 215 L 590 215" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="560" y="205" text-anchor="middle" fill="#38bdf8" font-size="8" font-weight="600">HTTPS API</text>
+
+  <!-- Nginx -> Backend API -->
+  <path d="M 710 270 L 650 310" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="690" y="295" fill="#38bdf8" font-size="8" font-weight="600">Reverse Proxy</text>
+
+  <!-- Backend API -> Redis -->
+  <path d="M 420 370 L 400 370" stroke="#f87171" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="410" y="360" text-anchor="middle" fill="#f87171" font-size="8">SET NX / GET</text>
+
+  <!-- Backend API -> Postgres -->
+  <path d="M 500 460 L 450 490" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="495" y="480" fill="#34d399" font-size="8" font-weight="600">SQL ACID / PgBouncer</text>
+
+  <!-- Postgres -> Worker (Outbox polling) -->
+  <path d="M 555 570 L 590 570" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="572" y="562" text-anchor="middle" fill="#38bdf8" font-size="8">Lee Outbox</text>
+
+  <!-- Worker -> Legacy -->
+  <path d="M 830 550 L 895 550" stroke="#38bdf8" stroke-width="2" fill="none" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+  <text x="862" y="540" text-anchor="middle" fill="#38bdf8" font-size="8" font-weight="600">REST / SOAP</text>
+  <text x="862" y="565" text-anchor="middle" fill="#4ade80" font-size="7">Asíncrono</text>
+
+  <!-- Footer Legend -->
+  <g transform="translate(180, 735)">
+    <rect width="800" height="35" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="400" y="22" text-anchor="middle" fill="#94a3b8" font-size="11">
+      Todos los contenedores corren en servidores Linux institucionales con software 100% de código abierto (C08) mantenibles por 4 devs y 1 sysadmin (C10).
+    </text>
+  </g>
+</svg>

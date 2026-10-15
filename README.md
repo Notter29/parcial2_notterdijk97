@@ -83,19 +83,19 @@ parcial2_notterdijk97/
 
 ### Enlaces Directos a los Entregables:
 
-* 📄 **[Actividad 1: Drivers Arquitectónicos y Escenarios de Calidad](docs/actividad1.md)**  
+* **[Actividad 1: Drivers Arquitectónicos y Escenarios de Calidad](docs/actividad1.md)**  
   *Identificación de objetivos de negocio, restricciones, atributos de calidad C01-C10, matriz de priorización, 6 escenarios en estándar SEI y análisis de trade-offs.*
-* 📄 **[Actividad 2: Estructura Arquitectónica y Modelo C4](docs/actividad2.md)**  
+* **[Actividad 2: Estructura Arquitectónica y Modelo C4](docs/actividad2.md)**  
   *Justificación del Monolito Modular Hexagonal, diagramas C4 (Contexto, Contenedores y Componentes), límites transaccionales ACID y mecanismos de comunicación.*
-* 📁 **[Actividad 3: Registros de Decisiones Arquitectónicas (ADRs)](docs/actividad3/)**  
+* **[Actividad 3: Registros de Decisiones Arquitectónicas (ADRs)](docs/actividad3/)**  
   * **[ADR-001: Selección del Estilo Arquitectónico](docs/actividad3/adr-001-seleccion-estilo-arquitectonico.md):** Justificación de Monolito Modular frente a Microservicios.
   * **[ADR-002: Consistencia de Cupos e Idempotencia](docs/actividad3/adr-002-consistencia-cupos-inscripciones.md):** Reserva condicional y Redis frente a bloqueos pesimistas (Escenario B).
   * **[ADR-003: Integración y Manejo de Fallas del Legado](docs/actividad3/adr-003-integracion-fallas-sistema-legado.md):** Patrón Transactional Outbox y Circuit Breaker frente a llamadas síncronas.
-* 📄 **[Actividad 4: Selección y Validación de Tácticas Arquitectónicas](docs/actividad4.md)**  
+* **[Actividad 4: Selección y Validación de Tácticas Arquitectónicas](docs/actividad4.md)**  
   *Detalle técnico de 4 tácticas (Idempotencia, Reserva Atómica, Outbox con Circuit Breaker, CQRS con réplica y caché), flujos de ejecución, comportamiento MVCC de PostgreSQL y protocolos de prueba con k6.*
-* 📄 **[Actividad 5: Gobernanza de Arquitectura](docs/actividad5.md)**  
+* **[Actividad 5: Gobernanza de Arquitectura](docs/actividad5.md)**  
   *Políticas verificables, matriz RACI para 4 desarrolladores y 1 sysadmin, ciclo de vida de ADRs, automatización CI/CD con linter de dependencias, gestión de deuda técnica y checklist estricto de Pull Requests.*
-* 🖼️ **[Carpeta de Diagramas Vectoriales C4](docs/diagramas/)**  
+* **[Carpeta de Diagramas Vectoriales C4](docs/diagramas/)**  
   *Diagramas SVG de alta fidelidad para Nivel 1 (Contexto), Nivel 2 (Contenedores) y Nivel 3 (Componentes).*
 
 ---
@@ -125,3 +125,10 @@ parcial2_notterdijk97/
 3. Evaluar los fundamentos técnicos y de negocio de cada decisión en los registros independientes en **`docs/actividad3/`**.
 4. Revisar la implementación detallada y los protocolos de prueba cuantitativa en **`docs/actividad4.md`**.
 5. Concluir con las reglas de control, pipelines automatizados y criterios de Pull Request en **`docs/actividad5.md`**.
+
+Acontinuación se detalla las herramientas usadas como apoyo:
+
+1. Grammarly: usada para mejorar la ortografia y darle una redaccion tecnica al parcial
+2. Claude: usada para sintetizar la informacion y contrapropuestas de los diferentes escenarios 
+3. DiagramGPT: usada para la creacion de los diagramas a partir de descripciones textuales y especificaciones de C4.
+4. k6: usada para la validacion de las tacticas arquitectonicas con scripts y escenarios de carga realistas.
